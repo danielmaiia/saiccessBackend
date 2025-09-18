@@ -1,11 +1,15 @@
 const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
-const routeLogin = require("./routes/routes")
+
+const routeApi = require("./routes/routes")
+const routeAuth = require("./routes/login")
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
-app.use("/login",routeLogin)
+
+app.use("/api",routeApi)
+app.use("/auth", routeAuth)
 
 
 module.exports = app

@@ -1,10 +1,7 @@
 const express = require("express")
 const router = express.Router()
+const controller = require("../controller/controller")
 
-router.get("/test", async(req,res)=>{
-    console.log("testando minha rota")
-    return "teste"
-    }
-)
+router.get("/user", controller.user)
 
 module.exports = router
