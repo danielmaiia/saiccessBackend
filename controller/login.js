@@ -17,9 +17,9 @@ exports.AuthUser = async (req, res) => {
             cu.email,
             cu.password,
             cu.status,
-            cug.group_id 
+            NVL(cug.group_id, 0) as group_id 
             FROM CONTROL_USER cu
-            INNER JOIN CONTROL_USER_GROUPS cug ON cug.USER_ID = cu.id
+            LEFT JOIN CONTROL_USER_GROUPS cug ON cug.USER_ID = cu.id
             WHERE cu.email = '${email}'
         `
         var result = await connection.execute(query)
